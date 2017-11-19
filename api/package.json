@@ -1,0 +1,28 @@
+{
+  "name": "starter-app-api",
+  "version": "0.1.0",
+  "description": "Node, Restify and MongoDB REST api",
+  "author": "root4me",
+  "license": "",
+  "repository": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js | ./node_modules/bunyan/bin/bunyan",
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "glob": "^7.1.2",
+    "grunt-contrib-watch": "^1.0.0",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.12.2",
+    "restify": "^6.0.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-develop": "^0.4.0",
+    "load-grunt-tasks": "^3.5.2",
+    "request": "^2.83.0",
+    "time-grunt": "^1.4.0"
+  }
+}
