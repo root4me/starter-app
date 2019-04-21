@@ -1,28 +1,36 @@
 {
-  "name": "starter-app-api",
+  "name": "starter-app",
   "version": "0.1.0",
-  "description": "Node, Restify and MongoDB REST api",
+  "description": "REST api for all the stuff server need to handle",
   "author": "root4me",
   "license": "",
-  "repository": "",
+  "repository": "https://gitlab.com/root4me/starter-app",
   "main": "app.js",
   "scripts": {
     "start": "node app.js | ./node_modules/bunyan/bin/bunyan",
-    "test": "grunt test"
+    "test": "node_modules/.bin/mocha -w"
   },
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "bunyan": "^1.8.12",
     "glob": "^7.1.2",
-    "grunt-contrib-watch": "^1.0.0",
     "jsonwebtoken": "^8.1.0",
-    "mongoose": "^4.12.2",
+    "mongoose": "^5.5.1",
+    "mongoose-timestamp": "^0.6.0",
     "restify": "^6.0.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "grunt": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-develop": "^0.4.0",
+    "grunt-exec": "^3.0.0",
+    "grunt-mocha-test": "^0.13.3",
     "load-grunt-tasks": "^3.5.2",
+    "mocha": "^6.1.4",
     "request": "^2.83.0",
+    "supertest": "^4.0.2",
     "time-grunt": "^1.4.0"
   }
 }

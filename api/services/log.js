@@ -2,7 +2,7 @@
 
 var bunyan = require('bunyan');
 
-var config = require('./config');
+var config = require('../config/config');
 
 var log = bunyan.createLogger({
   name: config.log.name,

@@ -50,24 +50,31 @@ var isAuthenticated = function(req, res, next) {
  * Authenticate user and generate token
  */
 
-var authenticate = function(req, res, next) {
+var U = require('./user');
+
+var authenticate = function (req, res, next) {
 
   var user = req.body.user;
   var pwd = req.body.pwd;
 
-  //TODO convert this to db lookup
-  if (user == "admin" && pwd == "password") {
-    var token = jwt.sign({ user: user }, tokenSecret, { expiresIn: tokenExpiresIn });
-    req.token = token;
-    return next();
+  U.validatePassword(user, pwd, function (err, matched) {
+    if (matched) {
+      var token = jwt.sign({
+        user: user
+      }, tokenSecret, {
+        expiresIn: tokenExpiresIn
+      });
+      req.token = token;
+      return next();
+    } else {
+      return res.json(401, {
+        authenticated: false,
+        errorCode: 401,
+        message: 'Incorrect user name or password'
+      });
+    }
+  });
 
-  } else {
-    return res.json(401, {
-      authenticated: false,
-      errorCode: 401,
-      message: 'Incorrect user name or password'
-    });
-  }
 };
 
 module.exports.isAuthenticated = isAuthenticated;

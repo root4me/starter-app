@@ -3,7 +3,7 @@ var log = require('./log');
 var glob = require('glob');
 var authenticator = require('./authenticator');
 
-var init = function(server, config) {
+var init = function (server, config) {
   server.use(restify.plugins.bodyParser());
   server.use(restify.plugins.queryParser());
   server.use(restify.plugins.gzipResponse());
@@ -18,7 +18,7 @@ var init = function(server, config) {
 
   /*jslint unparam:true*/
   // Default error handler. Personalize according to your needs.
-  server.on('uncaughtException', function(req, res, route, err) {
+  server.on('uncaughtException', function (req, res, route, err) {
     log.info('******* Begin Error *******\n%s\n*******\n%s\n******* End Error *******', route, err.stack);
     if (!res.headersSent) {
       return res.send(500, {
@@ -29,18 +29,10 @@ var init = function(server, config) {
     res.end();
   });
 
-  //require('./passport')(passport);
-  //server.use(passport.initialize());
-  //server.use(passport.session());
-
-
-
-  var routes = glob.sync(config.root + '/app/routes/*.js');
-  routes.forEach(function(route) {
+  var routes = glob.sync(config.root + '/routes/*.js');
+  routes.forEach(function (route) {
     require(route)(server, authenticator);
   });
-
-
 
   /*
     server.get('/', function(req, res, next) {

@@ -24,7 +24,7 @@ var config = {
     db: {
       host: MONGO_HOST,
       port: MONGO_PORT,
-      name: APP_NAME + '-' + NODE_ENV
+      name: APP_NAME.replace('.','-') + '-' + NODE_ENV
     },
     log: {
       name: APP_NAME + '-' + NODE_ENV,
@@ -41,7 +41,7 @@ var config = {
     db: {
       host: MONGO_HOST,
       port: MONGO_PORT,
-      name: APP_NAME + NODE_ENV
+      name: APP_NAME.replace('.','-')  + NODE_ENV
     },
     log: {
       name: APP_NAME + NODE_ENV,
@@ -58,7 +58,7 @@ var config = {
     db: {
       host: MONGO_HOST,
       port: MONGO_PORT,
-      name: APP_NAME + '-' + NODE_ENV
+      name: APP_NAME.replace('.','-')  + '-' + NODE_ENV
     },
     log: {
       name: APP_NAME + NODE_ENV,
